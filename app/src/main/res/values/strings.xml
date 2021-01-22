@@ -3,4 +3,7 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="invalidemail">Invalid email address</string>
+    <string name="required_field">This field is required</string>
+
 </resources>

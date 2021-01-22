@@ -54,4 +54,16 @@ public class Utils {
             return false;
     }
 
+    public static boolean emailValidation(String email){
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        if (email.matches(emailPattern))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

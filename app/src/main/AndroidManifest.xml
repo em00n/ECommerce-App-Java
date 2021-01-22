@@ -11,6 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_2_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ECommerceAppJava">
+        <activity android:name=".view.PaymentActivity"></activity>
+        <activity android:name=".view.SipmentInformationActivity" />
+        <activity android:name=".view.RegistrationActivity" />
+        <activity android:name=".view.LoginActivity" />
         <activity android:name=".view.CartActivity" />
         <activity
             android:name=".view.ProductListActivity"

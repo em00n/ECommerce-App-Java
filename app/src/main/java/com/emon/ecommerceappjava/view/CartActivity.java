@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -20,6 +21,7 @@ import com.emon.ecommerceappjava.model.cart.CartModelDao;
 import com.emon.ecommerceappjava.model.categori.CategoriModel;
 import com.emon.ecommerceappjava.model.categori.CategoriModelDao;
 import com.emon.ecommerceappjava.model.homepage.HomepageModelDao;
+import com.emon.ecommerceappjava.model.login.LoginModelDao;
 import com.emon.ecommerceappjava.model.product.ProductModel;
 import com.emon.ecommerceappjava.model.product.ProductModelDao;
 import com.emon.ecommerceappjava.model.subcate.SubCategoriModelDao;
@@ -39,6 +41,7 @@ public class CartActivity extends AppCompatActivity implements CartListAdapter.R
     ProductModelDao productModelDao;
     SubCategoriModelDao subCategoriModelDao;
     CartModelDao cartModelDao;
+    LoginModelDao loginModelDao;
 
     private CartListAdapter cartListAdapter;
     private RecyclerView cartListRV;
@@ -58,6 +61,7 @@ public class CartActivity extends AppCompatActivity implements CartListAdapter.R
         productModelDao = appDatabase.productModelDao();
         subCategoriModelDao = appDatabase.subCategoriModelDao();
         cartModelDao = appDatabase.cartModelDao();
+        loginModelDao = appDatabase.loginModelDao();
 
         cartListRV = findViewById(R.id.cartListRV);
         checkOutBTNLL = findViewById(R.id.checkOutBTNLL);
@@ -69,13 +73,22 @@ public class CartActivity extends AppCompatActivity implements CartListAdapter.R
         Toolbar toolbar = findViewById(R.id.toolbar);
         TextView titleTV = findViewById(R.id.toolbartitleTV);
         titleTV.setText("My Cart");
-        RelativeLayout rl = findViewById(R.id.tcartRL);
-        // rl.setVisibility(View.GONE);
+
 
         setSupportActionBar(toolbar);
 
-
         setCartItems();
+
+        checkOutBTNLL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (loginModelDao.count()>0){
+                    startActivity(new Intent(context, SipmentInformationActivity.class));
+                }else {
+                    startActivity(new Intent(context, LoginActivity.class));
+                }
+            }
+        });
     }
 
     List<CartModel> getcartList() {

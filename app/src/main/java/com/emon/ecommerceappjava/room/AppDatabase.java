@@ -17,13 +17,15 @@ import com.emon.ecommerceappjava.model.homepage.HomepageModelDao;
 import com.emon.ecommerceappjava.model.homepage.HomepageSliderModelConverter;
 import com.emon.ecommerceappjava.model.homepage.ImageListConverter;
 import com.emon.ecommerceappjava.model.homepage.HomepageCategoriModelConverter;
+import com.emon.ecommerceappjava.model.login.LoginModel;
+import com.emon.ecommerceappjava.model.login.LoginModelDao;
 import com.emon.ecommerceappjava.model.product.ProductModel;
 import com.emon.ecommerceappjava.model.product.ProductModelDao;
 import com.emon.ecommerceappjava.model.subcate.SubCategoriModel;
 import com.emon.ecommerceappjava.model.subcate.SubCategoriModelDao;
 
 
-@Database(entities = {CategoriModel.class, SubCategoriModel.class, HomepageModel.class, ProductModel.class, CartModel.class}, version = 1, exportSchema = false)
+@Database(entities = {CategoriModel.class, SubCategoriModel.class, HomepageModel.class, ProductModel.class, CartModel.class, LoginModel.class}, version = 1, exportSchema = false)
 @TypeConverters({SubcategoriConverter.class, ImageListConverter.class, HomepageCategoriModelConverter.class, HomepageSliderModelConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -38,6 +40,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract ProductModelDao productModelDao();
 
     public abstract CartModelDao cartModelDao();
+
+    public abstract LoginModelDao loginModelDao();
 
     public static AppDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {
