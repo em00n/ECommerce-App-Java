@@ -91,6 +91,12 @@ public class CartActivity extends AppCompatActivity implements CartListAdapter.R
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setCartItems();
+    }
+
     List<CartModel> getcartList() {
         return cartModelDao.getAllData();
     }
